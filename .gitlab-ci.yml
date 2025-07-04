@@ -1,0 +1,19 @@
+image: maven:3.8.5-openjdk-17
+
+stages:
+  - test
+
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+
+cache:
+  paths:
+    - .m2/repository
+
+before_script:
+  - echo "🔍 Ejecutando pruebas de automatización con Selenium..."
+
+test:
+  stage: test
+  script:
+    - mvn clean test
